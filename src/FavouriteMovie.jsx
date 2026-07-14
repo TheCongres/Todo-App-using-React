@@ -1,14 +1,14 @@
-function FavouriteMovie (props) {
+function FavouriteMovie ({movie}) {
     return (
        
         <li>
-            <img src={props.movie.Poster} alt={props.movie.Title} />
+            <img src={movie.Poster} alt={movie.Title} />
             <div>
                 <h4>
-                    {props.movie.Title}
+                    {movie.Title}
                 </h4>
                 <p>
-                    {props.movie.Year}
+                    {movie.Year}
                 </p>
             </div>
         </li>
