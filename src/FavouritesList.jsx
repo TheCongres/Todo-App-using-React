@@ -10,6 +10,7 @@ function FavouritesList(props) {
             <FavouriteMovie
               movie={movie}
               removeFavourite={props.removeFavourite}
+              showModal = {props.showModal}
             />
           ))}
         </ul>

@@ -1,11 +1,14 @@
-function FavouriteMovie ({movie, removeFavourite}) {
+function FavouriteMovie ({movie, removeFavourite, showModal}) {
     const handleRemove = (e) => {
         e.stopPropagation()
         removeFavourite(movie)
     }
+    const handleShowModal = () => {
+        showModal(movie)
+    }
     return (
        
-        <li>
+        <li onClick={handleShowModal}>
             <img src={movie.Poster} alt={movie.Title} />
             <div>
                 <h4>
