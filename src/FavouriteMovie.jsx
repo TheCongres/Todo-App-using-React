@@ -8,9 +8,9 @@ function FavouriteMovie ({movie, removeFavourite, showModal}) {
     }
     return (
        
-        <li onClick={handleShowModal}>
+        <li onClick={handleShowModal} className="favourite-movie">
             <img src={movie.Poster} alt={movie.Title} />
-            <div>
+            <div className="favourite-movie-info">
                 <h4>
                     {movie.Title}
                 </h4>
@@ -18,7 +18,7 @@ function FavouriteMovie ({movie, removeFavourite, showModal}) {
                     {movie.Year}
                 </p>
             </div>
-            <button onClick={handleRemove}>Remove Movie</button>
+            <button className="remove-button" onClick={handleRemove}>Remove Movie</button>
         </li>
     )
 }

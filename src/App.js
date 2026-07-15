@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import './styles.css'
 import SearchMovies from './SearchMovies';
 import FavouritesList from './FavouritesList'
 import MovieModal from './MovieModal'

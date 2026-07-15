@@ -2,16 +2,16 @@ import Modal from "react-modal";
 
 function MovieModal({ isOpen, close, movie }) {
   return (
-    <Modal isOpen={isOpen} onRquesteClose={close} contentLabel={movie.Title}>
-      <div>
-        <span onClick={close}>&times;</span>
-        <div>
+    <Modal className="modal" overlayClassName="modal-overlay" isOpen={isOpen} onRquesteClose={close} contentLabel={movie.Title}>
+      <div className="modal-content">
+        <span className="close"  onClick={close}>&times;</span>
+        <div className="modal-header">
           <img src={movie.Poster} alt={movie.Title} />
-          <div>
+          <div className="modal-title">
             <h2>{movie.Title}</h2>
             <p>{movie.Year}</p>
           </div>
-          <div>
+          <div className="moodal-body">
             <p>
                 <strong> Genre: </strong> {movie.Genre}
             </p>
