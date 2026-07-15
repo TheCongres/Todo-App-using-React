@@ -1,4 +1,8 @@
-function FavouriteMovie ({movie}) {
+function FavouriteMovie ({movie, removeFavourite}) {
+    const handleRemove = (e) => {
+        e.stopPropagation()
+        removeFavourite(movie)
+    }
     return (
        
         <li>
@@ -11,6 +15,7 @@ function FavouriteMovie ({movie}) {
                     {movie.Year}
                 </p>
             </div>
+            <button onClick={handleRemove}>Remove Movie</button>
         </li>
     )
 }
