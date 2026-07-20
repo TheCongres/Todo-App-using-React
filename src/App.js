@@ -1,49 +1,39 @@
-import { useState } from 'react';
-import './App.css';
-import './styles.css'
-import SearchMovies from './SearchMovies';
-import FavouritesList from './FavouritesList'
-import MovieModal from './MovieModal'
+import { useState } from "react"
+import TodoList from "./TodoList"
+import "./todo-list.css"
 
-function App() {
-  const [favourites, setFavourites] = useState([])
-  
-  const addFavourite = (movie) => {
-    setFavourites([...favourites, movie])
-  }
+export default function App(){
+  const [tasks, setTasks] = useState([])
+  const [todoItem, setTodoItem] = useState("")
 
-  const removeFavourite = (movie) => {
-    setFavourites ( favourites.filter(f => f.imdbID !== movie.imdbID))
+  const addTask = () => {
+    setTasks([...tasks, {id: tasks.length + 1, task:todoItem, completed: false}])
+    
   }
   
-  const [isModalOpen,setIsModalOpen] = useState(false)
-  const [selectedMovie, setSelectedMovie] = useState(null)
 
-  const showModal = (movie) => {
-    setIsModalOpen(true)
-    setSelectedMovie(movie)
+  const deleteTask = (id) => {
+    setTasks(tasks.filter(t => t.id !== id))
   }
 
-  const closeModal = (movie) => {
-    setIsModalOpen(false)
-    setSelectedMovie(null)
+  const taskChangedStatut = (id) => {
+    setTasks(tasks.map((t) => 
+      t.id === id 
+        ? { ...t, completed: !t.completed } 
+        : t
+    ))
   }
 
   return (
     <div className="App">
-      <SearchMovies addFavourite= {addFavourite} />
-      <FavouritesList 
-      favourites = {favourites} 
-      removeFavourite= {removeFavourite}
-      showModal = {showModal}
-       />
-       {selectedMovie && (<MovieModal 
-       isOpen = {isModalOpen}
-       movie = {selectedMovie}
-       close = {closeModal}
-       />)}
+      <TodoList 
+      tasks={tasks}
+      todoItem = {todoItem}
+      addTask = {addTask}
+      setTodoItem = {setTodoItem}
+      deleteTask={deleteTask}
+      taskChangedStatut = {taskChangedStatut}
+      />
     </div>
-  );
-}
-
-export default App;
+  )
+};
